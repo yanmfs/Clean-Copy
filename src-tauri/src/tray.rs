@@ -106,7 +106,9 @@ pub fn create(app: &AppHandle) -> tauri::Result<()> {
             _ => {}
         })
         .build(app)?;
-    *app.state::<TrayState>().0.lock().unwrap() = Some(tray);
+    if let Ok(mut slot) = app.state::<TrayState>().0.lock() {
+        *slot = Some(tray);
+    }
     Ok(())
 }
 
@@ -117,7 +119,8 @@ pub fn set_tray_labels(
     labels: TrayLabels,
 ) -> Result<(), String> {
     let menu = build_menu(&app, &labels).map_err(|e| e.to_string())?;
-    if let Some(tray) = state.0.lock().unwrap().as_ref() {
+    let guard = state.0.lock().map_err(|e| e.to_string())?;
+    if let Some(tray) = guard.as_ref() {
         tray.set_menu(Some(menu)).map_err(|e| e.to_string())?;
     }
     Ok(())
