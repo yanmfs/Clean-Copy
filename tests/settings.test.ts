@@ -30,4 +30,10 @@ describe("parseSettings", () => {
       "notification",
     );
   });
+
+  it("keeps clean-and-paste off unless it was turned on", () => {
+    expect(parseSettings({}, "macos").cleanAndPaste).toBe(false);
+    expect(parseSettings({ cleanAndPaste: true }, "macos").cleanAndPaste).toBe(true);
+    expect(parseSettings({ cleanAndPaste: "yes" }, "macos").cleanAndPaste).toBe(false);
+  });
 });

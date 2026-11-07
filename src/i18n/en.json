@@ -83,5 +83,12 @@
   "pane.tooManyChanges": "Too many changes to mark",
   "settings.confirmationStyle": "Where to show the confirmation",
   "settings.confirmationStyle.notification": "System notification",
-  "settings.confirmationStyle.hud": "Small window in the corner"
+  "settings.confirmationStyle.hud": "Small window in the corner",
+  "settings.paste": "Clean and paste in one step",
+  "settings.pasteHelp": "After cleaning with the shortcut, CleanCopy presses Ctrl+V (⌘V on Mac) in the app in front. Off by default.",
+  "settings.pasteExplain": "To press ⌘V for you, macOS requires the Accessibility permission. CleanCopy will ask now and uses it only to paste the cleaned text. You can take it back any time in System Settings, Privacy & Security, Accessibility.",
+  "settings.pasteContinue": "Continue",
+  "settings.pasteCancel": "Not now",
+  "settings.pasteDenied": "Without the permission CleanCopy cannot paste. Allow it in System Settings, Privacy & Security, Accessibility, and turn this on again.",
+  "notify.pasteFailed": "I cleaned the text but could not paste it. Paste it yourself."
 }

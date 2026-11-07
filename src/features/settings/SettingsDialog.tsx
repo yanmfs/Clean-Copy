@@ -6,7 +6,8 @@ import { platform } from "../../platform";
 import type { ThemeSetting } from "../../settings";
 import type { LangSetting } from "../../i18n";
 import { useApp, useT } from "../../store";
-import { changeAutostart } from "../clean/actions";
+import { Button } from "../../components/Button";
+import { changeAutostart, changeCleanAndPaste } from "../clean/actions";
 import { ShortcutRecorder } from "./ShortcutRecorder";
 
 export function SettingsDialog() {
@@ -17,6 +18,13 @@ export function SettingsDialog() {
   const update = useApp((s) => s.update);
   const setOptions = useApp((s) => s.setOptions);
   const [autostartFailed, setAutostartFailed] = useState(false);
+  const [explainPaste, setExplainPaste] = useState(false);
+  const [pasteDenied, setPasteDenied] = useState(false);
+
+  const enablePaste = async () => {
+    setExplainPaste(false);
+    setPasteDenied(!(await changeCleanAndPaste(true)));
+  };
 
   return (
     <Dialog
@@ -36,6 +44,42 @@ export function SettingsDialog() {
             checked={settings.showConfirmation}
             onChange={(showConfirmation) => update({ showConfirmation })}
           />
+          {platform.hasPaste && (
+            <>
+              <Toggle
+                label={t("settings.paste")}
+                checked={settings.cleanAndPaste}
+                onChange={(on) => {
+                  setPasteDenied(false);
+                  if (!on) return void changeCleanAndPaste(false);
+                  if (platform.os === "macos") setExplainPaste(true);
+                  else void enablePaste();
+                }}
+              />
+              <p className="pb-1 text-xs text-muted">{t("settings.pasteHelp")}</p>
+              {explainPaste && (
+                <div
+                  role="alertdialog"
+                  className="my-2 rounded-panel border border-border bg-surface-2 p-3 text-sm"
+                >
+                  <p>{t("settings.pasteExplain")}</p>
+                  <div className="mt-3 flex justify-end gap-2">
+                    <Button onClick={() => setExplainPaste(false)}>
+                      {t("settings.pasteCancel")}
+                    </Button>
+                    <Button variant="primary" onClick={() => void enablePaste()}>
+                      {t("settings.pasteContinue")}
+                    </Button>
+                  </div>
+                </div>
+              )}
+              {pasteDenied && (
+                <p role="alert" className="text-xs text-danger">
+                  {t("settings.pasteDenied")}
+                </p>
+              )}
+            </>
+          )}
           {platform.hasHud && settings.showConfirmation && (
             <div className="py-1">
               <Select
