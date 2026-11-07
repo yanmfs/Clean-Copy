@@ -4,8 +4,7 @@
 
 Copie um trecho de um PDF, aperte um atalho e cole o texto sem as quebras de linha no meio das frases.
 
-<!-- Grave docs/demo.gif e descomente a linha abaixo. -->
-<!-- ![CleanCopy em uso](docs/demo.gif) -->
+![CleanCopy em uso](docs/demo.gif)
 
 | Claro                                                                 | Escuro                                                                |
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
