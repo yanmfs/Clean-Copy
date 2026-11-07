@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 300" width="960" height="300" role="img" aria-labelledby="t d">
+<title id="t">CleanCopy: texto quebrado do PDF vira texto limpo</title><desc id="d">Linhas curtas e hifenizadas de um PDF são juntadas em parágrafos inteiros depois de um atalho.</desc>
+<style>
+:root{--bg:#f2efe7;--card:#fbfaf5;--line:#d8d2c2;--ink:#1b1a16;--mut:#67634f;--bar:#c9c2ae;--acc:#1d7a52;--accc:#ffffff;--mark:#fde58a;--ok:#1f8a5b;--bad:#d1342a;--warn:#c98200}
+@media (prefers-color-scheme:dark){:root{--bg:#13140f;--card:#1b1c15;--line:#37382b;--ink:#eeeadc;--mut:#a4a08a;--bar:#4d4e3c;--acc:#5fd09b;--accc:#06150d;--mark:#7a6a1c;--ok:#4fcf9b;--bad:#ff8a80;--warn:#f2b84b}}
+text{font-family:'Hanken Grotesk','Segoe UI',-apple-system,system-ui,sans-serif;fill:var(--ink)}
+.mut{fill:var(--mut)}
+.fo{transform-box:fill-box}
+
+.k1{animation:grow 8s infinite both;transform-origin:left center}
+.k2{animation:grow 8s infinite both;animation-delay:.25s;transform-origin:left center}
+.k3{animation:grow 8s infinite both;animation-delay:.5s;transform-origin:left center}
+.k4{animation:grow 8s infinite both;animation-delay:.75s;transform-origin:left center}
+@keyframes grow{0%,30%{transform:scaleX(0);opacity:0}38%{opacity:1}52%,90%{transform:scaleX(1);opacity:1}97%,100%{transform:scaleX(1);opacity:0}}
+.mk{animation:mk 8s infinite both}
+@keyframes mk{0%,26%{opacity:0}34%,62%{opacity:1}72%,100%{opacity:.0}}
+.chip{animation:chip 8s infinite both;transform-origin:center}
+@keyframes chip{0%,22%{transform:scale(1)}28%{transform:scale(1.14)}34%,100%{transform:scale(1)}}
+.keys{animation:keys 8s infinite both}
+@keyframes keys{0%,20%{opacity:.35}26%,40%{opacity:1}50%,100%{opacity:.35}}
+.stat{animation:stat 8s infinite both}
+@keyframes stat{0%,48%{opacity:0;transform:translateY(6px)}58%,90%{opacity:1;transform:none}97%,100%{opacity:0}}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<rect width="960" height="300" rx="16" fill="var(--bg)"/>
+<rect x="32" y="32" width="372" height="236" rx="12" fill="var(--card)" stroke="var(--line)"/><text x="52" y="62" font-size="13" font-weight="600" class="mut" letter-spacing=".8">DO PDF</text><rect x="52" y="84" width="250" height="9" rx="4.5" fill="var(--bar)"/><rect x="305" y="87" width="7" height="3" rx="1.5" fill="var(--bad)"/><rect x="52" y="105" width="300" height="9" rx="4.5" fill="var(--bar)"/><rect class="mk fo" x="48" y="102" width="310" height="15" rx="4" fill="var(--mark)" opacity="0"/><rect x="52" y="126" width="212" height="9" rx="4.5" fill="var(--bar)"/><rect class="mk fo" x="48" y="123" width="222" height="15" rx="4" fill="var(--mark)" opacity="0"/><rect x="52" y="147" width="284" height="9" rx="4.5" fill="var(--bar)"/><rect x="339" y="150" width="7" height="3" rx="1.5" fill="var(--bad)"/><rect x="52" y="168" width="260" height="9" rx="4.5" fill="var(--bar)"/><rect class="mk fo" x="48" y="165" width="270" height="15" rx="4" fill="var(--mark)" opacity="0"/><rect x="52" y="189" width="190" height="9" rx="4.5" fill="var(--bar)"/><rect class="mk fo" x="48" y="186" width="200" height="15" rx="4" fill="var(--mark)" opacity="0"/><rect x="52" y="210" width="300" height="9" rx="4.5" fill="var(--bar)"/><rect x="52" y="231" width="150" height="9" rx="4.5" fill="var(--bar)"/><g class="chip fo"><rect x="418" y="116" width="124" height="44" rx="10" fill="var(--acc)"/><text class="keys" x="480" y="144" font-size="17" font-weight="700" text-anchor="middle" style="fill:var(--accc)">⌃ ⌥ ⌘ V</text></g><path d="M430 190h100m-12-9 12 9-12 9" fill="none" stroke="var(--mut)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="556" y="32" width="372" height="236" rx="12" fill="var(--card)" stroke="var(--line)"/><text x="576" y="62" font-size="13" font-weight="600" class="mut" letter-spacing=".8">LIMPO</text><rect class="k1 fo" x="576" y="88" width="330" height="9" rx="4.5" fill="var(--ink)" opacity=".78"/><rect class="k1 fo" x="576" y="103" width="330" height="9" rx="4.5" fill="var(--ink)" opacity=".78"/><rect class="k2 fo" x="576" y="128" width="332" height="9" rx="4.5" fill="var(--ink)" opacity=".78"/><rect class="k2 fo" x="576" y="143" width="332" height="9" rx="4.5" fill="var(--ink)" opacity=".78"/><rect class="k3 fo" x="576" y="168" width="326" height="9" rx="4.5" fill="var(--ink)" opacity=".78"/><rect class="k3 fo" x="576" y="183" width="326" height="9" rx="4.5" fill="var(--ink)" opacity=".78"/><rect class="k4 fo" x="576" y="208" width="200" height="9" rx="4.5" fill="var(--ink)" opacity=".78"/><g class="stat"><rect x="716" y="236" width="196" height="22" rx="11" fill="var(--mark)"/><text x="814" y="251" font-size="12" font-weight="600" text-anchor="middle">8 quebras unidas · 2 hifenizações</text></g></svg>

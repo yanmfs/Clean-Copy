@@ -14,6 +14,12 @@ Copie um trecho de um PDF, aperte um atalho e cole o texto sem as quebras de lin
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | ![Janela do CleanCopy no tema claro](docs/shots/macos-light-main.png) | ![Janela do CleanCopy no tema escuro](docs/shots/macos-dark-main.png) |
 
+## Como funciona
+
+<p align="center">
+  <img src="docs/how-it-works.svg" alt="Do PDF ao texto limpo, com um atalho: as linhas curtas e hifenizadas viram parágrafos inteiros." width="100%">
+</p>
+
 ## Destaques
 
 - **Um atalho, sem janela:** copie do PDF, aperte o atalho e cole. O texto vem sem as quebras no meio das frases.

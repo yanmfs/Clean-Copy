@@ -14,6 +14,12 @@ Copy a passage from a PDF, press a shortcut, and paste it without the line break
 | ----------------------------------------------------------------- | --------------------------------------------------------------- |
 | ![CleanCopy window, light theme](docs/shots/macos-light-main.png) | ![CleanCopy window, dark theme](docs/shots/macos-dark-main.png) |
 
+## How it works
+
+<p align="center">
+  <img src="docs/how-it-works.svg" alt="From PDF to clean text with one shortcut: short, hyphenated lines become whole paragraphs." width="100%">
+</p>
+
 ## Highlights
 
 - **One shortcut, no window:** copy from the PDF, press the shortcut and paste. The text arrives without line breaks in the middle of sentences.
