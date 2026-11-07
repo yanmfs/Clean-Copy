@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Copy text from a PDF and paste it clean."
 authors = ["Yan Suzano"]
 license = "MIT"
-repository = "https://github.com/yanmfs/cleancopy"
+repository = "https://github.com/yanmfs/Clean-Copy"
 edition = "2021"
 
 [lib]

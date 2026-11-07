@@ -5,7 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 const host = process.env.TAURI_DEV_HOST;
 
 export default defineConfig(({ mode }) => ({
-  base: mode === "web" ? "/cleancopy/" : "/",
+  base: mode === "web" ? "/Clean-Copy/" : "/",
   plugins: [react(), tailwindcss()],
   clearScreen: false,
   server: {
