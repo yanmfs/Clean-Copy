@@ -7,8 +7,8 @@ Copie um trecho de um PDF, aperte um atalho e cole o texto sem as quebras de lin
 <!-- Grave docs/demo.gif e descomente a linha abaixo. -->
 <!-- ![CleanCopy em uso](docs/demo.gif) -->
 
-| Claro | Escuro |
-|---|---|
+| Claro                                                                 | Escuro                                                                |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | ![Janela do CleanCopy no tema claro](docs/shots/macos-light-main.png) | ![Janela do CleanCopy no tema escuro](docs/shots/macos-dark-main.png) |
 
 ## Por que existe

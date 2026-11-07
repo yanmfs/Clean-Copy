@@ -7,8 +7,8 @@ Copy a passage from a PDF, press a shortcut, and paste it without the line break
 <!-- Record docs/demo.gif and uncomment the line below. -->
 <!-- ![CleanCopy in use](docs/demo.gif) -->
 
-| Light | Dark |
-|---|---|
+| Light                                                             | Dark                                                            |
+| ----------------------------------------------------------------- | --------------------------------------------------------------- |
 | ![CleanCopy window, light theme](docs/shots/macos-light-main.png) | ![CleanCopy window, dark theme](docs/shots/macos-dark-main.png) |
 
 ## Why it exists
