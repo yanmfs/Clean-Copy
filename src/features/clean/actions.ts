@@ -3,6 +3,7 @@ import { toClipboardText } from "../../core/os";
 import { summarize } from "../../i18n";
 import { platform } from "../../platform";
 import { selectLang, tNow, useApp } from "../../store";
+import { useHistory } from "./history";
 
 const UNDO_WINDOW_MS = 5000;
 
@@ -40,6 +41,7 @@ export async function cleanClipboard(options: { paste?: boolean } = {}): Promise
   const unchanged = text === original.replace(/\r\n?/g, "\n");
   if (!unchanged) {
     lastClean = { original, at: Date.now() };
+    useHistory.getState().add(original, text);
     try {
       await platform.writeClipboard(toClipboardText(text, platform.os));
     } catch {

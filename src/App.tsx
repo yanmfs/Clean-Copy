@@ -40,7 +40,7 @@ export default function App() {
         <header className="flex h-12 shrink-0 items-center justify-between border-b border-border bg-surface px-4">
           <div className="flex items-center gap-2.5">
             <Logo />
-            <span className="font-semibold">CleanCopy</span>
+            <span className="font-display text-[17px] font-semibold tracking-tight">CleanCopy</span>
             {!platform.hasTray && (
               <span className="ml-3 hidden text-xs text-muted min-[900px]:inline">
                 {t("web.notice")}

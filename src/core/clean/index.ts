@@ -8,6 +8,11 @@ import { defaultOptions, emptyStats, type CleanOptions, type CleanStats } from "
 export { defaultOptions } from "./types";
 export type { CleanOptions, CleanStats } from "./types";
 
+// "[3]", "[2, 5]" and "[4-7]" after a word and a space (so `items[0]` stays). A label at the start of a line ("[1] Silva, 2020...")
+// belongs to a reference list and stays.
+const CITATION = /(?<=\S)[ \t]\[\d{1,3}(?:\s*[,–-]\s*\d{1,3})*\]/g;
+const BULLET = /^([ \t]*)[•●▪■◦‣∙][ \t]*/;
+
 export function cleanText(
   input: string,
   options: Partial<CleanOptions> = {},
@@ -20,6 +25,17 @@ export function cleanText(
   let lines = normalized.text.split("\n");
 
   stats.looksLikeCode = looksLikeCode(lines);
+  if (opts.removeCitations && !stats.looksLikeCode) {
+    lines = lines.map((line) =>
+      line.replace(CITATION, () => {
+        stats.removedCitations++;
+        return "";
+      }),
+    );
+  }
+  if (opts.normalizeBullets && !stats.looksLikeCode) {
+    lines = lines.map((line) => line.replace(BULLET, "$1• "));
+  }
   const keepsIndentation = stats.looksLikeCode && opts.mode !== "single-line";
   const tidy = keepsIndentation ? tidyCodeLine : tidyLine;
   const separator = opts.paragraphSeparator === "blank-line" ? "\n\n" : "\n";
