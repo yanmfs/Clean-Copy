@@ -40,7 +40,7 @@ xattr -cr /Applications/CleanCopy.app
 1. Open CleanCopy. It lives in the system tray (Windows) or the menu bar (macOS).
 2. Copy a passage from a PDF as usual.
 3. Press the shortcut: `Ctrl+Alt+Shift+V` on Windows, `⌃⌥⌘V` on macOS.
-4. A notification shows what changed ("Text cleaned · 14 line breaks joined · 2 hyphenations fixed"). In the settings you can swap the notification for a small window in the screen corner.
+4. A notification shows what changed ("Text cleaned · 14 line breaks joined · 2 hyphenations fixed"). In the settings you can swap the notification for a small window in the screen corner, or turn on "Clean and paste in one step": CleanCopy presses `Ctrl+V` (`⌘V`) for you right after cleaning. It is off by default; on macOS it asks for the Accessibility permission, explained before the request.
 5. Paste anywhere. To undo, press the shortcut again within 5 seconds or use "Restore original" in the tray menu.
 
 The main window shows the result live, lets you adjust the options and clean pasted text or dropped `.txt` files. "Show changes" marks what was done: removed text is struck through in the Original column, and what was joined or replaced is highlighted in the Clean column.
@@ -72,7 +72,6 @@ pnpm test
 
 ## Roadmap
 
-- One-step "clean and paste" that simulates the paste (macOS needs the Accessibility permission).
 - More rules for PDFs with footnotes.
 
 ## Contributing

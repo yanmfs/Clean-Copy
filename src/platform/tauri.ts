@@ -28,6 +28,9 @@ export const tauri: Platform = {
   hasGlobalShortcut: true,
   hasTray: true,
   hasHud: true,
+  hasPaste: true,
+  pasteAllowed: (ask) => invoke<boolean>("paste_allowed", { ask }),
+  simulatePaste: () => invoke("simulate_paste"),
   readClipboard: async () => (await readText()) ?? "",
   writeClipboard: (text) => writeText(text),
   registerShortcut: (accelerator, onPressed) =>

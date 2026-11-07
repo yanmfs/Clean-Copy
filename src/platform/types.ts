@@ -24,11 +24,15 @@ export interface Platform {
   hasGlobalShortcut: boolean;
   hasTray: boolean;
   hasHud: boolean;
+  hasPaste: boolean;
   readClipboard(): Promise<string>;
   writeClipboard(text: string): Promise<void>;
   registerShortcut(accelerator: string, onPressed: () => void): Promise<void>;
   unregisterShortcut(accelerator: string): Promise<void>;
   notify(message: string): Promise<void>;
+  // With `ask`, the system may open its permission prompt (macOS Accessibility).
+  pasteAllowed(ask: boolean): Promise<boolean>;
+  simulatePaste(): Promise<void>;
   showHud(message: string): Promise<void>;
   // The small window gets later messages while it is still on screen.
   onHudMessage(handler: (message: string) => void): Promise<Unlisten>;

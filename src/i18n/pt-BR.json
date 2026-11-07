@@ -83,5 +83,12 @@
   "pane.tooManyChanges": "Mudanças demais para marcar",
   "settings.confirmationStyle": "Onde mostrar a confirmação",
   "settings.confirmationStyle.notification": "Notificação do sistema",
-  "settings.confirmationStyle.hud": "Janelinha no canto da tela"
+  "settings.confirmationStyle.hud": "Janelinha no canto da tela",
+  "settings.paste": "Limpar e colar em um passo",
+  "settings.pasteHelp": "Depois de limpar com o atalho, o CleanCopy aperta Ctrl+V (⌘V no Mac) no aplicativo que está na frente. Desligado por padrão.",
+  "settings.pasteExplain": "Para apertar ⌘V por você, o macOS exige a permissão de Acessibilidade. O CleanCopy vai pedir agora e usa essa permissão só para colar o texto limpo. Você pode retirá-la quando quiser em Ajustes do Sistema, Privacidade e Segurança, Acessibilidade.",
+  "settings.pasteContinue": "Continuar",
+  "settings.pasteCancel": "Agora não",
+  "settings.pasteDenied": "Sem a permissão o CleanCopy não consegue colar. Libere em Ajustes do Sistema, Privacidade e Segurança, Acessibilidade, e ligue de novo.",
+  "notify.pasteFailed": "Limpei o texto, mas não consegui colar. Cole você mesmo."
 }

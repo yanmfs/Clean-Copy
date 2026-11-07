@@ -1,5 +1,6 @@
 mod files;
 mod hud;
+mod paste;
 mod tray;
 
 use tauri::{Emitter, Manager, WindowEvent};
@@ -23,6 +24,8 @@ pub fn run() {
         .invoke_handler(tauri::generate_handler![
             files::read_text_file,
             hud::show_hud,
+            paste::paste_allowed,
+            paste::simulate_paste,
             tray::set_tray_labels
         ])
         .setup(|app| {

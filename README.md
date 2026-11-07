@@ -40,7 +40,7 @@ xattr -cr /Applications/CleanCopy.app
 1. Abra o CleanCopy. Ele fica na bandeja do sistema (Windows) ou na barra de menus (macOS).
 2. Copie um trecho de um PDF como de costume.
 3. Aperte o atalho: `Ctrl+Alt+Shift+V` no Windows, `⌃⌥⌘V` no macOS.
-4. Uma notificação mostra o que mudou ("Texto limpo · 14 quebras unidas · 2 hifenizações"). Nas configurações dá para trocar a notificação por uma janelinha no canto da tela.
+4. Uma notificação mostra o que mudou ("Texto limpo · 14 quebras unidas · 2 hifenizações"). Nas configurações dá para trocar a notificação por uma janelinha no canto da tela, ou ligar "Limpar e colar em um passo": o CleanCopy aperta `Ctrl+V` (`⌘V`) por você logo depois de limpar. Essa opção vem desligada; no macOS ela pede a permissão de Acessibilidade, explicada antes do pedido.
 5. Cole onde quiser. Para desfazer, aperte o atalho de novo em até 5 segundos ou use "Restaurar original" no menu da bandeja.
 
 A janela principal serve para ver o resultado ao vivo, ajustar as opções e limpar texto colado ou arquivos `.txt` arrastados. O botão "Mostrar mudanças" marca o que foi feito: o que saiu aparece riscado na coluna Original e o que foi juntado ou trocado aparece destacado na coluna Limpo.
@@ -72,7 +72,6 @@ pnpm test
 
 ## Roadmap
 
-- "Limpar e colar" em um passo, simulando a colagem (no macOS exige permissão de Acessibilidade).
 - Mais regras para PDFs com notas de rodapé.
 
 ## Contribuir

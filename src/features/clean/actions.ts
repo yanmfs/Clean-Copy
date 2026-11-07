@@ -24,7 +24,9 @@ async function confirm(message: string) {
   await platform.notify(message).catch(() => undefined);
 }
 
-export async function cleanClipboard(): Promise<void> {
+// With `paste`, Ctrl/Cmd+V is pressed as soon as the clipboard is ready, before any confirmation
+// shows up, so nothing new can take the focus away from the app that should receive the text.
+export async function cleanClipboard(options: { paste?: boolean } = {}): Promise<void> {
   const { settings } = useApp.getState();
   let original: string;
   try {
@@ -43,6 +45,14 @@ export async function cleanClipboard(): Promise<void> {
     } catch {
       return confirm(tNow("notify.clipboardFailed"));
     }
+  }
+
+  if (options.paste) {
+    const pasted = await platform.simulatePaste().then(
+      () => true,
+      () => false,
+    );
+    if (!pasted) return confirm(tNow("notify.pasteFailed"));
   }
 
   if (stats.looksLikeCode && settings.options.mode === "paragraphs") {
@@ -66,10 +76,20 @@ export async function restoreOriginal(): Promise<void> {
   await confirm(tNow("notify.restored"));
 }
 
-// Pressing the shortcut again right after cleaning undoes it.
+// Pressing the shortcut again right after cleaning undoes it, unless it also pastes: then every
+// press is meant to put text in the app, and an undo of the clipboard would only confuse.
 export async function runCleanShortcut(): Promise<void> {
-  if (lastClean && Date.now() - lastClean.at < UNDO_WINDOW_MS) return restoreOriginal();
-  return cleanClipboard();
+  const { cleanAndPaste } = useApp.getState().settings;
+  const pasting = cleanAndPaste && platform.hasPaste;
+  if (!pasting && lastClean && Date.now() - lastClean.at < UNDO_WINDOW_MS) return restoreOriginal();
+  return cleanClipboard({ paste: pasting });
+}
+
+// Turning the option on is what asks macOS for the Accessibility permission.
+export async function changeCleanAndPaste(enabled: boolean): Promise<boolean> {
+  if (enabled && !(await platform.pasteAllowed(true).catch(() => false))) return false;
+  useApp.getState().update({ cleanAndPaste: enabled });
+  return true;
 }
 
 export async function changeShortcut(accelerator: string): Promise<boolean> {
