@@ -2,7 +2,7 @@
   <img src="docs/banner.en.png" alt="CleanCopy" width="100%">
 </p>
 
-<p align="center"><a href="README.md">Português</a> · <a href="../../releases">Download</a> · <a href="CONTRIBUTING.md">Contributing</a></p>
+<p align="center"><a href="README.md">Português</a> · <a href="../../releases">Download</a></p>
 
 <p align="center"><img alt="license MIT" src="https://img.shields.io/badge/license-MIT-1d7a52?style=flat-square&labelColor=1b1f27"> <img alt="platform Windows | macOS" src="https://img.shields.io/badge/platform-Windows%20%7C%20macOS-1d7a52?style=flat-square&labelColor=1b1f27"> <img alt="100% offline" src="https://img.shields.io/badge/100%25-offline-1d7a52?style=flat-square&labelColor=1b1f27"> <img alt="built with Tauri 2" src="https://img.shields.io/badge/built%20with-Tauri%202-1d7a52?style=flat-square&labelColor=1b1f27"></p>
 
@@ -94,7 +94,7 @@ pnpm test
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md). The best contribution is a PDF text that came out wrong, with the expected result.
+Issues and pull requests are welcome. The best contribution is a PDF text that came out wrong, with the expected result.
 
 ## License
 
