@@ -5,7 +5,7 @@ import { Logo } from "../../components/Logo";
 import { platform } from "../../platform";
 import { useApp, useT } from "../../store";
 
-const REPO_URL = "https://github.com/yanmfs/cleancopy";
+const REPO_URL = "https://github.com/yanmfs/Clean-Copy";
 
 export function AboutDialog() {
   const t = useT();
