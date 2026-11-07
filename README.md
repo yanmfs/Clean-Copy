@@ -1,6 +1,10 @@
-# CleanCopy
+<p align="center">
+  <img src="docs/banner.png" alt="CleanCopy" width="100%">
+</p>
 
-[English](README.en.md)
+<p align="center"><a href="README.en.md">English</a> · <a href="../../releases">Download</a> · <a href="CONTRIBUTING.md">Contribuir</a></p>
+
+<p align="center"><img alt="licença MIT" src="https://img.shields.io/badge/licen%C3%A7a-MIT-1d7a52?style=flat-square&labelColor=1b1f27"> <img alt="sistema Windows | macOS" src="https://img.shields.io/badge/sistema-Windows%20%7C%20macOS-1d7a52?style=flat-square&labelColor=1b1f27"> <img alt="100% offline" src="https://img.shields.io/badge/100%25-offline-1d7a52?style=flat-square&labelColor=1b1f27"> <img alt="feito com Tauri 2" src="https://img.shields.io/badge/feito%20com-Tauri%202-1d7a52?style=flat-square&labelColor=1b1f27"></p>
 
 Copie um trecho de um PDF, aperte um atalho e cole o texto sem as quebras de linha no meio das frases.
 
@@ -9,6 +13,14 @@ Copie um trecho de um PDF, aperte um atalho e cole o texto sem as quebras de lin
 | Claro                                                                 | Escuro                                                                |
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | ![Janela do CleanCopy no tema claro](docs/shots/macos-light-main.png) | ![Janela do CleanCopy no tema escuro](docs/shots/macos-dark-main.png) |
+
+## Destaques
+
+- **Um atalho, sem janela:** copie do PDF, aperte o atalho e cole. O texto vem sem as quebras no meio das frases.
+- **Mostrar mudanças:** o que foi removido aparece riscado e o que foi juntado, destacado, para você confiar no resultado.
+- **Recentes:** copie de novo um texto já limpo, sem voltar ao PDF (fica só na memória).
+- **Limpar e colar em um passo**, se você quiser (opcional, desligado por padrão).
+- **Offline e leve:** sem conta, sem telemetria, instalador de cerca de 2 MB.
 
 ## Por que existe
 

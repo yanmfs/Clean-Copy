@@ -1,6 +1,10 @@
-# CleanCopy
+<p align="center">
+  <img src="docs/banner.en.png" alt="CleanCopy" width="100%">
+</p>
 
-[Português](README.md)
+<p align="center"><a href="README.md">Português</a> · <a href="../../releases">Download</a> · <a href="CONTRIBUTING.md">Contributing</a></p>
+
+<p align="center"><img alt="license MIT" src="https://img.shields.io/badge/license-MIT-1d7a52?style=flat-square&labelColor=1b1f27"> <img alt="platform Windows | macOS" src="https://img.shields.io/badge/platform-Windows%20%7C%20macOS-1d7a52?style=flat-square&labelColor=1b1f27"> <img alt="100% offline" src="https://img.shields.io/badge/100%25-offline-1d7a52?style=flat-square&labelColor=1b1f27"> <img alt="built with Tauri 2" src="https://img.shields.io/badge/built%20with-Tauri%202-1d7a52?style=flat-square&labelColor=1b1f27"></p>
 
 Copy a passage from a PDF, press a shortcut, and paste it without the line breaks in the middle of sentences.
 
@@ -9,6 +13,14 @@ Copy a passage from a PDF, press a shortcut, and paste it without the line break
 | Light                                                             | Dark                                                            |
 | ----------------------------------------------------------------- | --------------------------------------------------------------- |
 | ![CleanCopy window, light theme](docs/shots/macos-light-main.png) | ![CleanCopy window, dark theme](docs/shots/macos-dark-main.png) |
+
+## Highlights
+
+- **One shortcut, no window:** copy from the PDF, press the shortcut and paste. The text arrives without line breaks in the middle of sentences.
+- **Show changes:** what was removed is struck through and what was joined is highlighted, so you can trust the result.
+- **Recent:** copy an already cleaned text again without going back to the PDF (kept in memory only).
+- **Clean and paste in one step**, if you want it (optional, off by default).
+- **Offline and light:** no account, no telemetry, an installer of about 2 MB.
 
 ## Why it exists
 
