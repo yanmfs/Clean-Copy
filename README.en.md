@@ -4,8 +4,7 @@
 
 Copy a passage from a PDF, press a shortcut, and paste it without the line breaks in the middle of sentences.
 
-<!-- Record docs/demo.gif and uncomment the line below. -->
-<!-- ![CleanCopy in use](docs/demo.gif) -->
+![CleanCopy in use](docs/demo.gif)
 
 | Light                                                             | Dark                                                            |
 | ----------------------------------------------------------------- | --------------------------------------------------------------- |
