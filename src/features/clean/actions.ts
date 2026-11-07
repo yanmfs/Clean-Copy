@@ -9,7 +9,18 @@ const UNDO_WINDOW_MS = 5000;
 let lastClean: { original: string; at: number } | null = null;
 
 async function confirm(message: string) {
-  if (!useApp.getState().settings.showConfirmation) return;
+  const { showConfirmation, confirmationStyle } = useApp.getState().settings;
+  if (!showConfirmation) return;
+  const hud = confirmationStyle === "hud" && platform.hasHud;
+  // If the small window cannot open, the system notification still gets the message across.
+  if (
+    hud &&
+    (await platform.showHud(message).then(
+      () => true,
+      () => false,
+    ))
+  )
+    return;
   await platform.notify(message).catch(() => undefined);
 }
 

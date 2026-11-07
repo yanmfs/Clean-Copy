@@ -78,5 +78,10 @@
   "tray.open": "Open CleanCopy",
   "tray.settings": "Settings…",
   "tray.quit": "Quit",
-  "web.notice": "Browser demo. The global shortcut and the tray only exist in the installed app."
+  "web.notice": "Browser demo. The global shortcut and the tray only exist in the installed app.",
+  "pane.showChanges": "Show changes",
+  "pane.tooManyChanges": "Too many changes to mark",
+  "settings.confirmationStyle": "Where to show the confirmation",
+  "settings.confirmationStyle.notification": "System notification",
+  "settings.confirmationStyle.hud": "Small window in the corner"
 }

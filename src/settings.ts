@@ -7,6 +7,8 @@ export type ThemeSetting = "system" | "light" | "dark";
 export interface Settings {
   shortcut: string;
   showConfirmation: boolean;
+  // Where the confirmation appears: the system notification or a small window of the app.
+  confirmationStyle: "notification" | "hud";
   autostart: boolean;
   language: LangSetting;
   theme: ThemeSetting;
@@ -17,6 +19,7 @@ export interface Settings {
 export const defaultSettings = (os: Os): Settings => ({
   shortcut: defaultShortcut(os),
   showConfirmation: true,
+  confirmationStyle: "notification",
   autostart: false,
   language: "auto",
   theme: "system",
@@ -38,6 +41,7 @@ export function parseSettings(raw: unknown, os: Os): Settings {
   return {
     shortcut: typeof raw.shortcut === "string" && raw.shortcut ? raw.shortcut : base.shortcut,
     showConfirmation: flag(raw.showConfirmation, base.showConfirmation),
+    confirmationStyle: pick(raw.confirmationStyle, ["notification", "hud"], base.confirmationStyle),
     autostart: flag(raw.autostart, base.autostart),
     language: pick(raw.language, ["auto", "pt-BR", "en"], base.language),
     theme: pick(raw.theme, ["system", "light", "dark"], base.theme),

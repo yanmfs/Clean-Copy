@@ -22,4 +22,12 @@ describe("parseSettings", () => {
     expect(parsed.options.mode).toBe("keep-lines");
     expect(parsed.options.fixLigatures).toBe(true);
   });
+
+  it("defaults to the system notification and accepts the small window", () => {
+    expect(parseSettings({}, "macos").confirmationStyle).toBe("notification");
+    expect(parseSettings({ confirmationStyle: "hud" }, "macos").confirmationStyle).toBe("hud");
+    expect(parseSettings({ confirmationStyle: "popup" }, "macos").confirmationStyle).toBe(
+      "notification",
+    );
+  });
 });

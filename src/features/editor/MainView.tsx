@@ -1,14 +1,16 @@
-import { Copy, Eraser, FileDown } from "lucide-react";
+import { Copy, Diff, Eraser, FileDown } from "lucide-react";
 import { useCallback, useDeferredValue, useEffect, useMemo, useState } from "react";
 import { Button } from "../../components/Button";
 import { Chip } from "../../components/Chip";
 import { Tooltip } from "../../components/Tooltip";
 import { cleanText } from "../../core/clean";
+import { diffText } from "../../core/diff";
 import { formatShortcut, modKeyLabel, toClipboardText } from "../../core/os";
 import { summarize } from "../../i18n";
 import { platform } from "../../platform";
 import { selectLang, useApp, useT } from "../../store";
 import { showToast } from "../../toast";
+import { DiffPane } from "./DiffPane";
 import { OptionsPanel } from "./OptionsPanel";
 
 export function MainView() {
@@ -18,9 +20,17 @@ export function MainView() {
   const shortcut = useApp((s) => s.settings.shortcut);
   const [input, setInput] = useState("");
   const [dragging, setDragging] = useState(false);
+  const [showChanges, setShowChanges] = useState(false);
 
   const deferred = useDeferredValue(input);
   const result = useMemo(() => cleanText(deferred, options), [deferred, options]);
+  const segments = useMemo(
+    () =>
+      showChanges && deferred.trim() !== ""
+        ? diffText(deferred.replace(/\r\n?/g, "\n"), result.text)
+        : null,
+    [showChanges, deferred, result.text],
+  );
 
   const copy = useCallback(async () => {
     if (result.text === "") return;
@@ -86,29 +96,46 @@ export function MainView() {
                 </Tooltip>
               )}
             </div>
-            <textarea
-              aria-label={t("pane.original")}
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder={t("pane.originalPlaceholder", { shortcut: shortcutLabel })}
-              spellCheck={false}
-              className="min-h-0 flex-1 resize-none rounded-panel border border-border bg-surface p-3.5 leading-relaxed placeholder:text-muted"
-            />
+            {segments ? (
+              <DiffPane label={t("pane.original")} segments={segments} side="original" />
+            ) : (
+              <textarea
+                aria-label={t("pane.original")}
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder={t("pane.originalPlaceholder", { shortcut: shortcutLabel })}
+                spellCheck={false}
+                className="min-h-0 flex-1 resize-none rounded-panel border border-border bg-surface p-3.5 leading-relaxed placeholder:text-muted"
+              />
+            )}
           </div>
           <div className="flex min-h-0 flex-col gap-2">
-            <div className="flex h-8 items-center">
+            <div className="flex h-8 items-center justify-between">
               <h2 className="text-xs font-semibold uppercase tracking-wide text-muted">
                 {t("pane.clean")}
               </h2>
+              <Button
+                variant={showChanges ? "subtle" : "ghost"}
+                aria-pressed={showChanges}
+                onClick={() => setShowChanges((v) => !v)}
+                className="h-8 px-2.5"
+              >
+                <Diff className="size-4" aria-hidden />
+                {t("pane.showChanges")}
+              </Button>
             </div>
-            <textarea
-              aria-label={t("pane.clean")}
-              readOnly
-              value={result.text}
-              placeholder={t("pane.cleanPlaceholder")}
-              spellCheck={false}
-              className="min-h-0 flex-1 resize-none rounded-panel border border-border bg-surface-2 p-3.5 leading-relaxed placeholder:text-muted"
-            />
+            {segments ? (
+              <DiffPane label={t("pane.clean")} segments={segments} side="clean" />
+            ) : (
+              <textarea
+                aria-label={t("pane.clean")}
+                readOnly
+                value={result.text}
+                placeholder={t("pane.cleanPlaceholder")}
+                spellCheck={false}
+                className="min-h-0 flex-1 resize-none rounded-panel border border-border bg-surface-2 p-3.5 leading-relaxed placeholder:text-muted"
+              />
+            )}
           </div>
         </div>
 
@@ -120,6 +147,9 @@ export function MainView() {
             )}
             {result.stats.looksLikeCode && <Chip tone="warning">{t("chips.code")}</Chip>}
             {!empty && chips.map((chip) => <Chip key={chip}>{chip}</Chip>)}
+            {showChanges && !empty && !segments && (
+              <Chip tone="warning">{t("pane.tooManyChanges")}</Chip>
+            )}
           </div>
           <Tooltip label={t("action.copy")} hint={`${modKeyLabel(platform.os)}+Enter`}>
             <Button variant="primary" onClick={copy} disabled={result.text === ""}>

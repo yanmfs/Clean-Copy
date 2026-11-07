@@ -144,3 +144,10 @@ input {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* The confirmation window has no frame; the page itself must not paint a background. */
+html.hud,
+html.hud body,
+html.hud #root {
+  background: transparent;
+}

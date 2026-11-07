@@ -27,6 +27,7 @@ export const tauri: Platform = {
   systemLocale: navigator.language,
   hasGlobalShortcut: true,
   hasTray: true,
+  hasHud: true,
   readClipboard: async () => (await readText()) ?? "",
   writeClipboard: (text) => writeText(text),
   registerShortcut: (accelerator, onPressed) =>
@@ -34,6 +35,8 @@ export const tauri: Platform = {
       if (event.state === "Pressed") onPressed();
     }),
   unregisterShortcut: (accelerator) => unregister(accelerator),
+  showHud: (message) => invoke("show_hud", { message }),
+  onHudMessage: (handler) => listen<string>("hud-message", (event) => handler(event.payload)),
   notify: async (message) => {
     if (await canNotify()) sendNotification({ title: "CleanCopy", body: message });
   },

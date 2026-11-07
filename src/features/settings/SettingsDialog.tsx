@@ -36,6 +36,20 @@ export function SettingsDialog() {
             checked={settings.showConfirmation}
             onChange={(showConfirmation) => update({ showConfirmation })}
           />
+          {platform.hasHud && settings.showConfirmation && (
+            <div className="py-1">
+              <Select
+                label={t("settings.confirmationStyle")}
+                value={settings.confirmationStyle}
+                onChange={(confirmationStyle: "notification" | "hud") =>
+                  update({ confirmationStyle })
+                }
+              >
+                <option value="notification">{t("settings.confirmationStyle.notification")}</option>
+                <option value="hud">{t("settings.confirmationStyle.hud")}</option>
+              </Select>
+            </div>
+          )}
           {platform.hasTray && (
             <Toggle
               label={t("settings.autostart")}
