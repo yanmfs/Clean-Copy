@@ -1,0 +1,4 @@
+O protocolo foi definido em 2019 e revisado
+em 2023, após consulta.
+A nova versão inclui criptografia de ponta
+a ponta em todas as mensagens.

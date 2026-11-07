@@ -1,0 +1,4 @@
+Os pilares são:
+• confidencialidade;
+• integridade da informação;
+• disponibilidade.

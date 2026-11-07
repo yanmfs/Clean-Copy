@@ -1,0 +1,12 @@
+A pesquisa sobre aprendizagem de máquina
+cresceu de forma acelerada na última década,
+impulsionada pela disponibilidade de grandes
+bases de dados e de poder computacional.
+
+Neste trabalho, propomos uma abordagem
+simples para avaliar a qualidade dos modelos
+em cenários com poucos exemplos rotulados.
+
+Os resultados mostram que a abordagem é
+consistente em todos os conjuntos testados e
+que o custo adicional é pequeno.

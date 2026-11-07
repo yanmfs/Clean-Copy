@@ -1,0 +1,5 @@
+SILVA, João. Introdução à lógica de programação. 2. ed. São Paulo: Editora Exemplo, 2019.
+
+SOUZA, Maria; LIMA, Pedro. Redes de computadores na prática. Rio de Janeiro: Editora Modelo, 2021.
+
+PEREIRA, Ana. Estruturas de dados. Goiânia: Editora Teste, 2020.
