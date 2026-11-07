@@ -5,6 +5,9 @@ export interface CleanOptions {
   removeLineNumbers: boolean;
   fixHyphenation: boolean;
   fixLigatures: boolean;
+  // Off by default: they change text that is not an artifact of copying.
+  removeCitations: boolean;
+  normalizeBullets: boolean;
   paragraphSeparator: "blank-line" | "newline";
 }
 
@@ -14,6 +17,7 @@ export interface CleanStats {
   removedPageNumbers: number;
   removedHeaderLines: number;
   removedLineNumbers: number;
+  removedCitations: number;
   looksLikeCode: boolean;
 }
 
@@ -24,6 +28,8 @@ export const defaultOptions: CleanOptions = {
   removeLineNumbers: true,
   fixHyphenation: true,
   fixLigatures: true,
+  removeCitations: false,
+  normalizeBullets: false,
   paragraphSeparator: "blank-line",
 };
 
@@ -34,6 +40,7 @@ export function emptyStats(): CleanStats {
     removedPageNumbers: 0,
     removedHeaderLines: 0,
     removedLineNumbers: 0,
+    removedCitations: 0,
     looksLikeCode: false,
   };
 }

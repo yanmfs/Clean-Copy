@@ -35,6 +35,7 @@ export function summarize(lang: Lang, stats: CleanStats): string[] {
     ["chips.pageNumbers", stats.removedPageNumbers],
     ["chips.headers", stats.removedHeaderLines],
     ["chips.lineNumbers", stats.removedLineNumbers],
+    ["chips.citations", stats.removedCitations],
   ];
   return parts
     .filter(([, count]) => count > 0)

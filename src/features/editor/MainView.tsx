@@ -11,14 +11,34 @@ import { platform } from "../../platform";
 import { selectLang, useApp, useT } from "../../store";
 import { showToast } from "../../toast";
 import { DiffPane } from "./DiffPane";
+import { useHistory } from "../clean/history";
+import { useEditor } from "./editorStore";
 import { OptionsPanel } from "./OptionsPanel";
+import { RecentList } from "./RecentList";
+
+const countWords = (text: string) => text.split(/\s+/).filter(Boolean).length;
+
+function Counter({ text }: { text: string }) {
+  const t = useT();
+  if (text === "") return <span aria-hidden>&nbsp;</span>;
+  return (
+    <span className="tabular-nums">
+      {t("count.words", { count: countWords(text) })} · {t("count.chars", { count: text.length })}
+    </span>
+  );
+}
 
 export function MainView() {
   const t = useT();
   const lang = useApp(selectLang);
   const options = useApp((s) => s.settings.options);
   const shortcut = useApp((s) => s.settings.shortcut);
-  const [input, setInput] = useState("");
+  const input = useEditor((st) => st.input);
+  const setInput = useEditor((st) => st.setInput);
+  const welcomeSeen = useApp((st) => st.settings.welcomeSeen);
+  const update = useApp((st) => st.update);
+  const recentCount = useHistory((st) => st.items.length);
+  const [tab, setTab] = useState<"options" | "recent">("options");
   const [dragging, setDragging] = useState(false);
   const [showChanges, setShowChanges] = useState(false);
 
@@ -67,7 +87,7 @@ export function MainView() {
       cancelled = true;
       unlisten?.();
     };
-  }, [t]);
+  }, [t, setInput]);
 
   const chips = summarize(lang, result.stats);
   const empty = deferred.trim() === "";
@@ -80,7 +100,7 @@ export function MainView() {
         <div className="grid min-h-0 flex-1 grid-cols-2 gap-3">
           <div className="flex min-h-0 flex-col gap-2">
             <div className="flex h-8 items-center justify-between">
-              <h2 className="text-xs font-semibold uppercase tracking-wide text-muted">
+              <h2 className="text-xs font-semibold uppercase tracking-[0.08em] text-muted">
                 {t("pane.original")}
               </h2>
               {input !== "" && (
@@ -108,6 +128,9 @@ export function MainView() {
                 className="min-h-0 flex-1 resize-none rounded-panel border border-border bg-surface p-3.5 leading-relaxed placeholder:text-muted"
               />
             )}
+            <p className="h-4 text-xs text-muted">
+              <Counter text={input} />
+            </p>
           </div>
           <div className="flex min-h-0 flex-col gap-2">
             <div className="flex h-8 items-center justify-between">
@@ -136,8 +159,36 @@ export function MainView() {
                 className="min-h-0 flex-1 resize-none rounded-panel border border-border bg-surface-2 p-3.5 leading-relaxed placeholder:text-muted"
               />
             )}
+            <p className="h-4 text-xs text-muted">
+              <Counter text={result.text} />
+            </p>
           </div>
         </div>
+
+        {!welcomeSeen && empty && (
+          <section
+            aria-label={t("welcome.title")}
+            className="anim-fade rounded-panel border border-border-strong/60 bg-surface p-4"
+          >
+            <h2 className="font-display text-lg font-semibold tracking-tight">
+              {t("welcome.title")}
+            </h2>
+            <ol className="mt-2 grid gap-2 text-[13px] sm:grid-cols-3">
+              {(["welcome.step1", "welcome.step2", "welcome.step3"] as const).map((key, i) => (
+                <li key={key} className="flex gap-2.5">
+                  <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-accent text-[11px] font-bold text-accent-contrast">
+                    {i + 1}
+                  </span>
+                  <span>{t(key, { shortcut: shortcutLabel })}</span>
+                </li>
+              ))}
+            </ol>
+            <div className="mt-3 flex items-center justify-between gap-3">
+              <p className="text-xs text-muted">{t("welcome.hint")}</p>
+              <Button onClick={() => update({ welcomeSeen: true })}>{t("welcome.dismiss")}</Button>
+            </div>
+          </section>
+        )}
 
         <div className="flex items-center justify-between gap-3">
           <div className="flex min-h-9 flex-wrap items-center gap-2">
@@ -162,12 +213,28 @@ export function MainView() {
 
       <aside
         aria-label={t("options.title")}
-        className="hidden w-64 shrink-0 overflow-y-auto border-l border-border bg-surface p-4 min-[780px]:block"
+        className="hidden w-72 shrink-0 overflow-y-auto border-l border-border bg-surface p-4 min-[780px]:block"
       >
-        <h2 className="mb-3 text-xs font-semibold uppercase tracking-wide text-muted">
-          {t("options.title")}
-        </h2>
-        <OptionsPanel />
+        <div role="tablist" className="mb-4 flex gap-1 border-b border-border">
+          {(["options", "recent"] as const).map((id) => (
+            <button
+              key={id}
+              type="button"
+              role="tab"
+              aria-selected={tab === id}
+              onClick={() => setTab(id)}
+              className={`-mb-px h-8 border-b-2 px-2.5 text-[13px] font-medium ${tab === id ? "border-accent text-text" : "border-transparent text-muted hover:text-text"}`}
+            >
+              {id === "options" ? t("options.title") : t("recent.tab")}
+              {id === "recent" && recentCount > 0 && (
+                <span className="ml-1.5 rounded bg-surface-2 px-1.5 text-[11px] tabular-nums">
+                  {recentCount}
+                </span>
+              )}
+            </button>
+          ))}
+        </div>
+        {tab === "options" ? <OptionsPanel /> : <RecentList />}
       </aside>
 
       {dragging && (

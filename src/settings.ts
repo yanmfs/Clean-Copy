@@ -16,6 +16,7 @@ export interface Settings {
   theme: ThemeSetting;
   options: CleanOptions;
   trayNoticeSeen: boolean;
+  welcomeSeen: boolean;
 }
 
 export const defaultSettings = (os: Os): Settings => ({
@@ -28,6 +29,7 @@ export const defaultSettings = (os: Os): Settings => ({
   theme: "system",
   options: defaultOptions,
   trayNoticeSeen: false,
+  welcomeSeen: false,
 });
 
 const isRecord = (v: unknown): v is Record<string, unknown> => typeof v === "object" && v !== null;
@@ -50,6 +52,7 @@ export function parseSettings(raw: unknown, os: Os): Settings {
     language: pick(raw.language, ["auto", "pt-BR", "en"], base.language),
     theme: pick(raw.theme, ["system", "light", "dark"], base.theme),
     trayNoticeSeen: flag(raw.trayNoticeSeen, base.trayNoticeSeen),
+    welcomeSeen: flag(raw.welcomeSeen, base.welcomeSeen),
     options: {
       mode: pick(
         rawOptions.mode,
@@ -61,6 +64,8 @@ export function parseSettings(raw: unknown, os: Os): Settings {
       removeLineNumbers: flag(rawOptions.removeLineNumbers, d.removeLineNumbers),
       fixHyphenation: flag(rawOptions.fixHyphenation, d.fixHyphenation),
       fixLigatures: flag(rawOptions.fixLigatures, d.fixLigatures),
+      removeCitations: flag(rawOptions.removeCitations, d.removeCitations),
+      normalizeBullets: flag(rawOptions.normalizeBullets, d.normalizeBullets),
       paragraphSeparator: pick(
         rawOptions.paragraphSeparator,
         ["blank-line", "newline"],
