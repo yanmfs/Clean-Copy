@@ -78,5 +78,10 @@
   "tray.open": "Abrir CleanCopy",
   "tray.settings": "Configurações…",
   "tray.quit": "Sair",
-  "web.notice": "Versão de teste no navegador. O atalho global e a bandeja só existem no app instalado."
+  "web.notice": "Versão de teste no navegador. O atalho global e a bandeja só existem no app instalado.",
+  "pane.showChanges": "Mostrar mudanças",
+  "pane.tooManyChanges": "Mudanças demais para marcar",
+  "settings.confirmationStyle": "Onde mostrar a confirmação",
+  "settings.confirmationStyle.notification": "Notificação do sistema",
+  "settings.confirmationStyle.hud": "Janelinha no canto da tela"
 }

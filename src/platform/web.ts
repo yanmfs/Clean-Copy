@@ -15,10 +15,13 @@ export const web: Platform = {
   systemLocale: navigator.language,
   hasGlobalShortcut: false,
   hasTray: false,
+  hasHud: false,
   readClipboard: () => navigator.clipboard.readText(),
   writeClipboard: (text) => navigator.clipboard.writeText(text),
   registerShortcut: () => Promise.reject(new Error("unsupported")),
   unregisterShortcut: () => Promise.resolve(),
+  showHud: () => Promise.resolve(),
+  onHudMessage: () => Promise.resolve(() => undefined),
   notify: (message) => {
     showToast(message);
     return Promise.resolve();

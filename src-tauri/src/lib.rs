@@ -1,4 +1,5 @@
 mod files;
+mod hud;
 mod tray;
 
 use tauri::{Emitter, Manager, WindowEvent};
@@ -21,6 +22,7 @@ pub fn run() {
         .manage(tray::TrayState::default())
         .invoke_handler(tauri::generate_handler![
             files::read_text_file,
+            hud::show_hud,
             tray::set_tray_labels
         ])
         .setup(|app| {
