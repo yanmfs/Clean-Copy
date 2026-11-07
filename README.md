@@ -49,7 +49,7 @@ Baixe o instalador na página de [Releases](../../releases):
 - **macOS:** `CleanCopy_x.y.z_universal.dmg` (Apple Silicon e Intel)
 - **Windows:** `CleanCopy_x.y.z_x64-setup.exe`
 
-Teste no navegador, sem instalar nada: <https://yanmfs.github.io/Clean-Copy/>. A versão web só tem a janela de prévia; o atalho global e a bandeja existem no app instalado.
+Teste no navegador, sem instalar nada: <https://yanmfs.github.io/CleanCopy/>. A versão web só tem a janela de prévia; o atalho global e a bandeja existem no app instalado.
 
 ## Primeira abertura
 
