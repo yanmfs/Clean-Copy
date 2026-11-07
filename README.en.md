@@ -32,6 +32,14 @@ Copy a passage from a PDF, press a shortcut, and paste it without the line break
 
 Text copied from a PDF comes with a line break at the end of every line on the page, split words ("implemen- tation"), page numbers and headers in the middle of a paragraph. I used to fix that by hand every time I pasted a quote into a paper. CleanCopy does it for me.
 
+## Install with Homebrew (macOS)
+
+```sh
+brew install --cask yanmfs/tap/cleancopy
+```
+
+This installs the same universal macOS app provided in Releases, for Apple Silicon and Intel. Update with `brew update` followed by `brew upgrade --cask yanmfs/tap/cleancopy`. See **First launch** below if macOS asks you to confirm opening the app.
+
 ## Download
 
 Get the installer from the [Releases](../../releases) page:

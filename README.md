@@ -32,6 +32,16 @@ Copie um trecho de um PDF, aperte um atalho e cole o texto sem as quebras de lin
 
 Texto copiado de PDF vem com quebra de linha no fim de cada linha da página, palavras partidas ("implemen- tação"), número de página e cabeçalho no meio do parágrafo. Eu consertava isso à mão toda vez que colava uma citação num trabalho. O CleanCopy faz isso por mim.
 
+## Instalar pelo Homebrew (macOS)
+
+```sh
+brew install --cask yanmfs/tap/cleancopy
+```
+
+O Homebrew baixa o mesmo instalador da release e coloca o CleanCopy em Aplicativos. É a versão universal, para Apple Silicon e Intel. Para atualizar, rode `brew update` e `brew upgrade --cask yanmfs/tap/cleancopy`.
+
+Se o macOS pedir confirmação na primeira abertura, veja a seção **Primeira abertura** abaixo. Mais detalhes em [instalação pelo Homebrew](docs/instalacao-homebrew.md).
+
 ## Download
 
 Baixe o instalador na página de [Releases](../../releases):
