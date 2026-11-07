@@ -1,0 +1,1 @@
+A implementação de sistemas distribuídos apresenta diversos desafios relacionados à comunicação entre processos.

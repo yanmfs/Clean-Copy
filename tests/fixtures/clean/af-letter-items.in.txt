@@ -1,0 +1,4 @@
+Escolha uma opção:
+a) abrir o arquivo;
+b) salvar uma cópia;
+c) sair do programa.
