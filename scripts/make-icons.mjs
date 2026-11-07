@@ -3,7 +3,7 @@ import { chromium } from "playwright";
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 
 const icon = readFileSync("public/icon.svg", "utf8");
-const trayGlyph = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><g fill="none" stroke="#000" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"><rect x="22" y="24" width="56" height="64" rx="10"/><path d="M38 58l10 10 18-22"/></g><rect x="36" y="12" width="28" height="20" rx="7" fill="#000"/></svg>`;
+const trayGlyph = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><g fill="#000"><rect x="16" y="24" width="68" height="14" rx="7"/><rect x="16" y="43" width="68" height="14" rx="7"/><rect x="16" y="62" width="40" height="14" rx="7"/></g></svg>`;
 
 const browser = await chromium.launch({ channel: "chromium" });
 const page = await browser.newPage();
